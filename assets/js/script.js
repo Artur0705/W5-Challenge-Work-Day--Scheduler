@@ -10,7 +10,7 @@ var workHours = [
   "04pm",
   "05pm",
 ];
-var today = moment()
+var today = moment().format("H")
 var hourFormat = "hha";
 var currentHour = today.format(hourFormat);
 var currentDay = today.format("dddd, MMMM Do");
@@ -29,7 +29,7 @@ for (var i = 0; i <= workHours.length; i++) {
   var futureWorkHours = workHours.slice(workHours.indexOf(currentHour) + 1, workHours.length)
   var isFuture = futureWorkHours.includes(hour)
   var isPresent = hour === currentHour;
-  
+
   if (isFuture) {
     textarea.attr("class", "future");
   } else if (isPresent) {
@@ -42,4 +42,9 @@ for (var i = 0; i <= workHours.length; i++) {
 function onSave(hour) {
   var hourValue = $("#" + hour + "-textarea").val();
   localStorage.setItem(hour, hourValue);
-}
+
+//   if(!$("#messageBox")) {
+//     var messageBox = "<div id='messageBox'>Saved to local storage</div>" 
+//     $("#container").append(messageBox)
+//   }
+// }
