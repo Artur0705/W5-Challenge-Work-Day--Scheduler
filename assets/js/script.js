@@ -55,7 +55,7 @@ function onSave(hour) {
     localStorage.setItem(hour, hourValue);
 
     if (!$("#messageBox").length) {
-      var messageBox = $("<div id='messageBox'>Saved to local storage</div>");
+      var messageBox = $("<div id='messageBox'>Appointment Added to <span>localStorage</span> <i class='fas fa-check'></i></div>");
       $("#container").prepend(messageBox);
       setTimeout(function() { 
         $("#messageBox").remove();
