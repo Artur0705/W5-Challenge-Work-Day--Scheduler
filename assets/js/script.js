@@ -57,6 +57,9 @@ function onSave(hour) {
     if (!$("#messageBox").length) {
       var messageBox = $("<div id='messageBox'>Saved to local storage</div>");
       $("#container").prepend(messageBox);
+      setTimeout(function() { 
+        $("#messageBox").remove();
+    }, 2000);
     }
   }
 }
