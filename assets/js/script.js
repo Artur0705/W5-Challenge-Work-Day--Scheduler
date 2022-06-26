@@ -50,13 +50,13 @@ for (var i = 0; i <= workHours.length; i++) {
 // Create a function to save a value
 function onSave(hour) {
   var hourValue = $("#" + hour + "-textarea").val();
-  
+
   if (hourValue.trim()) {
     localStorage.setItem(hour, hourValue);
 
-    if (!$("#messageBox")) {
-      var messageBox = "<div id='messageBox'>Saved to local storage</div>";
-      $("#container").append(messageBox);
+    if (!$("#messageBox").length) {
+      var messageBox = $("<div id='messageBox'>Saved to local storage</div>");
+      $("#container").prepend(messageBox);
     }
   }
 }
