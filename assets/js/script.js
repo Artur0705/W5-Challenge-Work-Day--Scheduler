@@ -1,4 +1,4 @@
-// Showing current date using moment
+// Variable's start
 var workHours = [
   "09am",
   "10am",
@@ -10,12 +10,20 @@ var workHours = [
   "04pm",
   "05pm",
 ];
-var today = moment().format("H")
+var today = moment();
 var hourFormat = "hha";
 var currentHour = today.format(hourFormat);
 var currentDay = today.format("dddd, MMMM Do");
+var futureWorkHours = workHours.slice(
+  workHours.indexOf(currentHour) + 1,
+  workHours.length
+);
+// Variable's end
 
+// Set current Day
 $("#currentDay").text(currentDay);
+
+// Creating a loop to check work hours status and values
 
 for (var i = 0; i <= workHours.length; i++) {
   var hour = workHours[i];
@@ -26,25 +34,29 @@ for (var i = 0; i <= workHours.length; i++) {
     textarea.val(hourValue);
   }
 
-  var futureWorkHours = workHours.slice(workHours.indexOf(currentHour) + 1, workHours.length)
-  var isFuture = futureWorkHours.includes(hour)
+  var isFuture =
+    futureWorkHours.includes(hour) && workHours.includes(currentHour);
   var isPresent = hour === currentHour;
 
   if (isFuture) {
-    textarea.attr("class", "future");
+    textarea.addClass("future");
   } else if (isPresent) {
-    textarea.attr("class", "present");
+    textarea.addClass("present");
   } else {
-    textarea.attr("class", "past");
+    textarea.addClass("past");
   }
 }
 
+// Create a function to save a value
 function onSave(hour) {
   var hourValue = $("#" + hour + "-textarea").val();
-  localStorage.setItem(hour, hourValue);
+  
+  if (hourValue.trim()) {
+    localStorage.setItem(hour, hourValue);
 
-//   if(!$("#messageBox")) {
-//     var messageBox = "<div id='messageBox'>Saved to local storage</div>" 
-//     $("#container").append(messageBox)
-//   }
-// }
+    if (!$("#messageBox")) {
+      var messageBox = "<div id='messageBox'>Saved to local storage</div>";
+      $("#container").append(messageBox);
+    }
+  }
+}
