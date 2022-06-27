@@ -2,6 +2,19 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  animation: animate-jumbotron 1600ms 200ms backwards;
+}
+
+@keyframes animate-jumbotron {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 textarea{
@@ -78,6 +91,11 @@ footer {
   transition: all .3s ease-in-out;
 }
 
+.saveBtn:hover {
+  transform: scale(1.1);
+  transition: all 300ms ease-in-out;
+}
+
 .saveBtn:hover i {
   color: black;
   font-size: 20px;
@@ -98,4 +116,19 @@ footer {
 #messageBox i {
   text-shadow: 0px 0px 1px black;
   color: green;
+}
+
+.time-block {
+  animation: fade-up 650ms 800ms backwards;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
 }
